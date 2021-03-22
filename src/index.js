@@ -1,26 +1,8 @@
-import { from, interval, of, zip } from 'rxjs';
-import { concatMap, delay, map, mergeMap, take } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const list = [1, 2, 3, 4, 5];
+// map(x => x * x)(of(1, 2, 3)).subscribe(console.log);
 
-// from(list)
-//   .pipe(
-//     mergeMap(i => of(i).pipe(delay(i * 1000))),
-//     take(10)
-//   )
-//   .subscribe(console.log);
-
-// from(list)
-//   .pipe(mergeMap(i => of(i).pipe(delay(i * 1000))))
-//   .subscribe(console.log);
-
-// from(list)
-//   .pipe(concatMap(val => of(val).pipe(delay(1000))))
-//   .subscribe(console.log);
-
-interval(1000)
-  .pipe(
-    take(list.length),
-    map(i => list[i])
-  )
+of(1, 2, 3)
+  .pipe(map(x => x * x))
   .subscribe(console.log);
